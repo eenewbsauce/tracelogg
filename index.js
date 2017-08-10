@@ -15,9 +15,9 @@ var homeDir         = process.env[(process.platform == 'win32') ? 'USERPROFILE' 
 var config;
 
 try {
-    config          = require(homeDir + '/.natelogg/config');
+    config          = require(homeDir + '/.tracelogg/config');
 }catch(e) {
-    console.error('Could not load config file. Make sure you have a config file at ~/.natelogg/config');
+    console.error('Could not load config file. Make sure you have a config file at ~/.tracelogg/config');
     process.exit();
 }
 
@@ -58,7 +58,7 @@ app.get('/newtab', function (req, res) {
 });
 
 var server = app.listen(port, function () {
-    console.log('Natelogg started on port %s', port);
+    console.log('Tracelogg started on port %s', port);
 });
 var io = socketio(server);
 
