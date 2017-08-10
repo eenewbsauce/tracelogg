@@ -172,7 +172,7 @@ function lineProcessor(data, isRecursive) {
                 $anchor.attr('href', 'newtab?url=' + data.trim());
                 $anchor.removeClass('disabled');
             } else {
-                console.error('Failed to bind node inspector. No matching port found. Please check your config file: ~/.natelogg/config');
+                console.error('Failed to bind node inspector. No matching port found. Please check your config file: ~/.tracelogg/config');
             }
         });
     } else {

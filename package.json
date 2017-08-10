@@ -9,7 +9,7 @@
     "url": "https://github.com/eenewbsauce"
   },
   "bin": {
-    "natelogg-server": "./index.js"
+    "tracelogg-server": "./index.js"
   },
   "keywords": [
     "tail",

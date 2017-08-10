@@ -1,16 +1,16 @@
-[![NPM version](https://img.shields.io/npm/v/natelogg.svg)](https://www.npmjs.com/package/natelogg)
+[![NPM version](https://img.shields.io/npm/v/tracelogg.svg)](https://www.npmjs.com/package/tracelogg)
 
-Natelogg is a lightweight app for realtime tailing of logs to your browser. It's very quick and easy to set up.
+Tracelogg is a lightweight app for realtime tailing of logs to your browser. It's very quick and easy to set up.
 
 ![alt text](screenshots/screenshot.png "Interface")
 
 ### Installation
 
-- Install globally using npm: `npm install -g natelogg`
+- Install globally using npm: `npm install -g tracelogg`
 
 ### Configuration
 
-Copy the following example config file to `~/.natelogg/config` and change values as necessary:
+Copy the following example config file to `~/.tracelogg/config` and change values as necessary:
 
 ```javascript
 var config = {};
@@ -49,7 +49,7 @@ All files located in `config.logDirectory` are loaded in the Logs section. Check
 
 #### Run log server
 ```
-natelogg-server
+tracelogg-server
 ```
 
 or
