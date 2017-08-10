@@ -1,12 +1,12 @@
 {
-  "name": "natelogg",
-  "version": "1.0.10",
+  "name": "tracelogg",
+  "version": "1.0.0",
   "description": "Log monitoring in realtime through your browser. Built-in support for color Bunyan logging and filtering.",
   "homepage": "",
   "author": {
-    "name": "Haig Papaghanian",
-    "email": "haig.papaghanian@gmail.com",
-    "url": "https://github.com/ichernev"
+    "name": "Ryan Tracey",
+    "email": "ryan.m.tracey@gmail.com",
+    "url": "https://github.com/eenewbsauce"
   },
   "bin": {
     "natelogg-server": "./index.js"
@@ -22,10 +22,10 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/haigo/natelogg.git"
+    "url": "https://github.com/eenewbsauce/tracelogg.git"
   },
   "bugs": {
-    "url": "https://github.com/haigo/natelogg/issues"
+    "url": "https://github.com/eenewbsauce/tracelogg/issues"
   },
   "scripts": {
     "start": "node index.js",
