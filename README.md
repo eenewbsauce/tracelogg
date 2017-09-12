@@ -63,12 +63,12 @@ npm start
 npm run inspect
 ```
 
-#### Run loger server with Live Reload for UI apps (must set config.uiLogStreams, config.uiBuildStartString, config.uiBuildStopString)
+#### Run log server with Live Reload for UI apps (must set config.uiLogStreams, config.uiBuildStartString, config.uiBuildStopString)
 ```
 npm run liveReload
 ```
 
-#### Run loger server with binding for Node --inspect and Live Reload for UI apps (must set all advanced configuration options)
+#### Run log server with binding for Node --inspect and Live Reload for UI apps (must set all advanced configuration options)
 ```
 npm run all
 ```
