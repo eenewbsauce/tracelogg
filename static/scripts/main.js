@@ -154,6 +154,12 @@ function highlightLog(logName, color) {
     $('#logs .log-label')
         .filter(function() {return $(this).text() === logName})
         .css('color', color);
+
+    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = '/static/images/favicon-' + color + '.ico';
+    document.getElementsByTagName('head')[0].appendChild(link);
 }
 
 function lineProcessor(data, isRecursive) {
