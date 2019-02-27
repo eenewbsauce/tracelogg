@@ -1,100 +1,103 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>TraceLogg</title>
-        <link rel="stylesheet" href="/static/jquery-ui-1.11.4.custom/jquery-ui.min.css">
-        <link rel="stylesheet" type="text/css" href="/static/style/main.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="shortcut icon" type="image/png" href="/static/images/favicon.ico"/>
-        <script src="/static/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
-        <script src="/static/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="/static/scripts/main.js"></script>
-        <script>
-            var options = <%- JSON.stringify(options) %>;
-        </script>
-    </head>
-    <body>
-        <div id="main">
-            <div id="left-panel">
-                <span class="left-panel-header">
-                    Logs
-                </span>
-                <div class="panel-section-body">
-                    <table id="logs">
-                    <% for(var i=0; i<logs.length; i++) { %>
-                        <tr>
-                            <% if (options.enableInspector) { %>
-                                <td>
-                                    <a class="linkless disabled" target="_blank" href="">
-                                        <i class="fa fa-bug fa-lg"></i>
-                                    </a>
-                                </td>
-                            <% } %>
-                            <td><input type="checkbox" value="<%= logs[i] %>" /></td>
-                            <td class="log-label"><%= logs[i] %></td>
-                        </tr>
-                    <% } %>
-                    </table>
-                </div>
-                <span class="left-panel-header">
-                    Formatters
-                </span>
-                <div class="panel-section-body">
-                    <table>
-                        <tr>
-                            <td><input type="radio" name="formatter" value="none" checked="checked" /></td>
-                            <td>None</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="formatter" value="bunyan" /></td>
-                            <td>Bunyan</td>
-                            <td><label id="bunyan-options">(options)</label></td>
-                        </tr>
-                    </table>
-                </div>
-                <span class="left-panel-header">
-                    Settings
-                </span>
-                <div class="panel-section-body">
-                    <table>
-                        <tr>
-                            <td>Font Size:</td>
-                            <td>
-                                <select id="font-size">
-                                    <option value="8">8</option>
-                                    <option value="10">10</option>
-                                    <option value="12" selected>12</option>
-                                    <option value="14">14</option>
-                                    <option value="16">16</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>History Max Lines:</td>
-                            <td>
-                                <select id="max-history-lines">
-                                    <option value="100">100</option>
-                                    <option value="1000" selected>1,000</option>
-                                    <option value="10000">10,000</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <input type="button" id="clear-history" value="Clear History" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div id="right-panel">
-                <div id="shell"></div>
-            </div>
-        </div>
-        <div id="bunyan-options-window" style="display: none;">
-<textarea spellcheck="false">
+
+<head>
+  <title>TraceLogg</title>
+  <link rel="stylesheet" href="/static/jquery-ui-1.11.4.custom/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/style/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/png" href="/static/images/favicon.ico" />
+  <script src="/static/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
+  <script src="/static/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+  <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/static/scripts/main.js"></script>
+  <script>
+    var options = <%- JSON.stringify(options) %>;
+  </script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="left-panel">
+      <span class="left-panel-header">
+        Logs
+      </span>
+      <div class="panel-section-body">
+        <table id="logs">
+          <% for(var i=0; i<logs.length; i++) { %>
+          <tr>
+            <% if (options.enableInspector) { %>
+            <td>
+              <a class="linkless disabled" target="_blank" href="">
+                <i class="fa fa-bug fa-lg"></i>
+              </a>
+            </td>
+            <% } %>
+            <td><input type="checkbox" value="<%= logs[i] %>" /></td>
+            <td class="log-label"><%= logs[i] %></td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
+      <span class="left-panel-header">
+        Formatters
+      </span>
+      <div class="panel-section-body">
+        <table>
+          <tr>
+            <td><input type="radio" name="formatter" value="none" checked="checked" /></td>
+            <td>None</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><input type="radio" name="formatter" value="bunyan" /></td>
+            <td>Bunyan</td>
+            <td><label id="bunyan-options">(options)</label></td>
+          </tr>
+        </table>
+      </div>
+      <span class="left-panel-header">
+        Settings
+      </span>
+      <div class="panel-section-body">
+        <table>
+          <tr>
+            <td>Font Size:</td>
+            <td>
+              <select id="font-size">
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12" selected>12</option>
+                <option value="14">14</option>
+                <option value="16">16</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>History Max Lines:</td>
+            <td>
+              <select id="max-history-lines">
+                <option value="100">100</option>
+                <option value="1000" selected>1,000</option>
+                <option value="10000">10,000</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="button" id="clear-history" value="Clear History" />
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="right-panel">
+      <div id="shell"></div>
+    </div>
+  </div>
+  <div id="bunyan-options-window" style="display: none;">
+    <textarea spellcheck="false">
 {
     color      : true,
     colorMode  : 'HTML',
@@ -108,6 +111,7 @@
     timeFormat : 'UTC',
     conditions : []
 }</textarea>
-        </div>
-    </body>
+  </div>
+</body>
+
 </html>

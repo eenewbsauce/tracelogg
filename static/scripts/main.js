@@ -9,6 +9,11 @@ $(document).ready(function() {
     var portAppMap = options.portAppMap;
     shell = $('#shell');
 
+    hotkeys('command+k', function(event, handler){
+      event.preventDefault();
+      clearWindow();
+    });
+
     $('#logs input:checkbox').each(function(idx, el) {
         el = $(el);
         el.prop('checked', false);
@@ -64,9 +69,13 @@ $(document).ready(function() {
     });
 
     $('#clear-history').click(function() {
-        shell.html('');
-        historyLength = 0;
+      clearWindow();
     });
+
+    function clearWindow() {
+      shell.html('');
+      historyLength = 0;
+    }
 
     $('input[name=formatter]').change(function() {
         var formatter = $(this).val();
