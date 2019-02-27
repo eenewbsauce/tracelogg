@@ -28,7 +28,6 @@ $(document).ready(function() {
     $(window).on('beforeunload', function() {
         //save selected to logs to local storage
         storage.setItem('logSelection', getLogSelection());
-        return 'Stop logging and exit?';
     });
 
     function getLogSelection() {
